@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="Space Game"
+run/main_scene="res://scenes/menus/multiplayer/multiplayer_connect_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MultiplayerManager="*res://scenes/autoloads/multiplayer_manager.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Holepunch/plugin.cfg")

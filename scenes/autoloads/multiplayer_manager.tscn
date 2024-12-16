@@ -10,3 +10,4 @@ script = ExtResource("1_yjmh7")
 unique_name_in_owner = true
 script = ExtResource("2_f0gtm")
 rendevouz_address = "127.0.0.1"
+rendevouz_port = 5000

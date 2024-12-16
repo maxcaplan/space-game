@@ -10,12 +10,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_msess")
-host_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer2/HostButton")
-join_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer/JoinButton")
-copy_code_button = NodePath("CenterContainer/VBoxContainer/HBoxContainer2/CopyCodeButton")
-hide_code_button = NodePath("CenterContainer/VBoxContainer/HideCodeButton")
-lobby_code_label = NodePath("CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer/Label")
-lobby_code_input = NodePath("CenterContainer/VBoxContainer/HBoxContainer/LineEdit")
+host_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HostButton")
+join_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/JoinButton")
+copy_code_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/CopyCodeButton")
+hide_code_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HideCodeButton")
+lobby_code_label = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/Label")
+lobby_code_input = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/LineEdit")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -25,47 +25,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Multiplayer Lobby"
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="HostButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="HostButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Host"
+text = "Host Lobby"
 
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Lobby Code:"
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CopyCodeButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+[node name="CopyCodeButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Copy"
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -76,17 +95,17 @@ clear_button_enabled = true
 caret_blink = true
 secret_character = "*"
 
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="JoinButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="JoinButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Join"
+text = "Join Lobby"
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HideCodeButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="HideCodeButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "Hide Code"
+text = "Hide Lobby Code"

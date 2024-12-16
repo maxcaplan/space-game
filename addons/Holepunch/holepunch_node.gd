@@ -3,7 +3,7 @@ extends Node
 
 #Signal is emitted when holepunch is complete. Connect this signal to your network manager
 #Once your network manager received the signal they can host or join a game on the host port
-signal hole_punched(my_port, hosts_port, hosts_address)
+signal hole_punched(my_port: int, hosts_port: int, hosts_address: String)
 
 #This signal is emitted when the server has acknowledged your client registration, but before the
 #address and port of the other client have arrived.
@@ -207,6 +207,7 @@ func start_traversal(id, is_player_host, player_name):
 		server_udp.close()
 
 	var err = server_udp.bind(rendevouz_port, "*")
+	print(err)
 	if err != OK:
 		print("Error listening on port: " + str(rendevouz_port) + " to server: " + rendevouz_address)
 

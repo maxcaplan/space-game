@@ -247,6 +247,8 @@ func _send_client_to_server():
 
 func _exit_tree():
 	server_udp.close()
+	if p_timer != null:
+		p_timer.queue_free()
 
 
 func _ready():

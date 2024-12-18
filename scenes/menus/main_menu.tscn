@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3x01vttrwda0"]
+
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_mke64"]
+[ext_resource type="PackedScene" uid="uid://g4sg5bdp2d2v" path="res://scenes/menus/title_menu.tscn" id="2_iigg4"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="2_pte1v"]
+[ext_resource type="PackedScene" uid="uid://bj2cw8lik3o6n" path="res://scenes/menus/multiplayer/multiplayer_connect_menu.tscn" id="3_4owdr"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mke64")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="MenuStates" type="CenterContainer" parent="MarginContainer" node_paths=PackedStringArray("initial_state")]
+layout_mode = 2
+script = ExtResource("2_pte1v")
+initial_state = NodePath("TitleMenu")
+
+[node name="TitleMenu" parent="MarginContainer/MenuStates" node_paths=PackedStringArray("multiplayer_menu") instance=ExtResource("2_iigg4")]
+layout_mode = 2
+multiplayer_menu = NodePath("../MultiplayerConnectMenu")
+
+[node name="MultiplayerConnectMenu" parent="MarginContainer/MenuStates" node_paths=PackedStringArray("main_menu_state") instance=ExtResource("3_4owdr")]
+visible = false
+layout_mode = 2
+main_menu_state = NodePath("../TitleMenu")

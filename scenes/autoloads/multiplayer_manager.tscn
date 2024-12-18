@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://wtx3dtan8h1h"]
+[gd_scene load_steps=2 format=3 uid="uid://wtx3dtan8h1h"]
 
 [ext_resource type="Script" path="res://scripts/autoloads/multiplayer_manager.gd" id="1_yjmh7"]
-[ext_resource type="Script" path="res://addons/Holepunch/holepunch_node.gd" id="2_f0gtm"]
 
 [node name="MultiplayerManager" type="Node"]
 script = ExtResource("1_yjmh7")
-
-[node name="HolePunch" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_f0gtm")
-rendevouz_address = "127.0.0.1"
-rendevouz_port = 5000

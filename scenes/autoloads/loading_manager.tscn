@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hd7tjc8vhh3l"]
+
+[ext_resource type="Script" path="res://scripts/autoloads/loading_manager.gd" id="1_lpv02"]
+
+[node name="LoadingManager" type="Node"]
+script = ExtResource("1_lpv02")

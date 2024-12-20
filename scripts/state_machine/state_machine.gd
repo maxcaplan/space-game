@@ -2,6 +2,7 @@ class_name StateMachine
 extends Node
 
 @export var initial_state : BaseState 
+@export var auto_start: bool = true
 @export var debug : bool = false
 
 var current_state : BaseState
@@ -9,13 +10,10 @@ var states : Dictionary = {}
 
 signal transitioned(state: BaseState, new_state: BaseState)
 
-#
-# BUILT IN FUNCTIONS
-#
-
 func _ready():
 	states = init_child_states()
-	change_state(initial_state)
+	if auto_start:
+		start()
 
 func _process(delta):
 	if not current_state:
@@ -41,11 +39,15 @@ func _unhandled_input(event):
 	
 	current_state.unhandled_input(event)
 
-#
-# METHODS
-#
+##
+## METHODS
+##
 
-# Changes the current state to a new state
+## Starts the state machine entering an initial state
+func start(state: BaseState = initial_state) -> void:
+	change_state(state)
+
+## Changes the current state to a new state
 func change_state(new_state: BaseState) -> void:
 	if current_state == new_state:
 		return
@@ -62,7 +64,7 @@ func change_state(new_state: BaseState) -> void:
 	
 	if debug: print(current_state.name)
 
-# Get all child state nodes and connect transition signal
+## Get all child state nodes and connect transition signal
 func init_child_states() -> Dictionary:
 	var child_states: Dictionary = {}
 	
@@ -73,9 +75,9 @@ func init_child_states() -> Dictionary:
 	
 	return child_states
 
-#
-# SIGNAL FUNCTIONS
-#
+##
+## SIGNAL FUNCTIONS
+##
 
 func _on_child_transition(state: BaseState, new_state: BaseState):
 	if state != current_state:

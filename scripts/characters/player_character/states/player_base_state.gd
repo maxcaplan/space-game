@@ -1,0 +1,4 @@
+class_name PlayerCharacterBaseState
+extends BaseState
+
+var character_controller: PlayerCharacterController

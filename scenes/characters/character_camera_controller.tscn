@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://p6gwr04qihmd"]
+
+[ext_resource type="Script" path="res://scripts/characters/character_camera_controller.gd" id="1_c31x6"]
+
+[node name="CameraYaw" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("1_c31x6")
+
+[node name="CameraPitch" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.247602)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPitch"]
+unique_name_in_owner = true

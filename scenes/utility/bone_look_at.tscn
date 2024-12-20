@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://h7kj3folylou"]
+
+[ext_resource type="Script" path="res://scripts/utility/bone_look_at.gd" id="1_5peqi"]
+
+[node name="BoneLookAt" type="Node"]
+script = ExtResource("1_5peqi")
+
+[node name="BoneMarker" type="Node3D" parent="."]
+unique_name_in_owner = true

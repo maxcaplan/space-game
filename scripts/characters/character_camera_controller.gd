@@ -5,6 +5,13 @@ extends Node3D
 @onready var camera_pitch: Node3D = %CameraPitch
 @onready var camera_yaw: Node3D = self
 
+@export var camera_offset: Vector3 = Vector3.ZERO:
+	set(value):
+		camera_offset = value
+		if camera_pitch != null:
+			camera_pitch.position = value
+
+
 ## Determins if the camera controller is activly capturing camera movement
 @export var active: bool = false:
 	set(value):
@@ -37,8 +44,8 @@ extends Node3D
 @export var camera_min_pitch: float = -80
 
 func _ready():
-	if camera != null:
-		camera.current = current
+	camera.current = current
+	camera_pitch.position = camera_offset
 	
 	if capture_mouse_while_active && active && current:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
